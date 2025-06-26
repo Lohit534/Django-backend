@@ -1,13 +1,13 @@
 from django.db import models
+from django.utils import timezone
 
-# Create your models here.
+class Post(models.Model):
+    post_id = models.CharField(max_length=20)
+    content = models.TextField()
+    likes = models.IntegerField(default=0)
+    user = models.ForeignKey('user.CustomUser', on_delete=models.CASCADE)
+    
 
 
-class post(models.Model):
-    post_id=models.CharField()
-    content=models.TextField()
-    likes=models.IntegerField()
-    user_id=models.IntegerField()
 
-    def __str__(self):
-        return f"post_id={self.post_id}and content={self.content}"
+

@@ -1,7 +1,9 @@
-from . import views
 from django.urls import path
+from .views import PostListCreateAPIView, PostRetrieveUpdateDestroyAPIView
+from .views import BulkPostCreateView
 
 urlpatterns = [
-    path('create/', views.create, name='postCreate'),
-    path('get/', views.get, name='postGet'),
+    path('posts/', PostListCreateAPIView.as_view(), name='post-list'),
+    path('posts/<int:pk>/', PostRetrieveUpdateDestroyAPIView.as_view(), name='post-detail'),
+    path('bulk-create/', BulkPostCreateView.as_view(), name='bulk-post-create'),
 ]
